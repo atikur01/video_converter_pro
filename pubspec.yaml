@@ -1,0 +1,62 @@
+name: video_converter_pro
+description: "Premium Video Converter Pro - Convert videos with style"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI & Designf
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+  flutter_animate: ^4.5.0
+  shimmer: ^3.0.0
+  
+  # State Management
+  provider: ^6.1.2
+  
+  # Video Processing
+  ffmpeg_kit_flutter_new: ^4.1.0
+  video_thumbnail: ^0.5.3
+  
+  # File & Storage
+  file_picker: ^8.1.6
+  path_provider: ^2.1.5
+  shared_preferences: ^2.3.4
+  permission_handler: ^11.3.1
+  
+  # Utilities
+  share_plus: ^10.1.4
+  open_filex: ^4.5.0
+  uuid: ^4.5.1
+  intl: ^0.20.2
+  
+  # Haptic Feedback
+  vibration: ^2.0.1
+  device_info_plus: ^11.5.0
+
+dev_dependencies:
+  flutter_launcher_icons: ^0.14.4
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/inapplogo/
+
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/logo/logo.png"
+  adaptive_icon_foreground: "assets/logo/logo.png"
+  adaptive_icon_background: "#FFFFFF"
+  remove_alpha_ios: false
