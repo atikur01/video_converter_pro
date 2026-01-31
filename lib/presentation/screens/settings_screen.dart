@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/constants/app_constants.dart';
 import '../providers/settings_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// Settings screen with theme, cache, and app info
 class SettingsScreen extends StatefulWidget {
@@ -121,6 +122,46 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             )
                             .animate()
                             .fadeIn(delay: 450.ms, duration: 300.ms)
+                            .slideX(begin: 0.05, end: 0),
+
+                        const SizedBox(height: 24),
+
+                        // App section
+                        _SectionTitle(
+                          title: 'App',
+                        ).animate().fadeIn(delay: 500.ms, duration: 300.ms),
+                        const SizedBox(height: 12),
+
+                        _SettingsTile(
+                              icon: Icons.star_rate_rounded,
+                              iconColor: Colors.amber,
+                              title: 'Rate App',
+                              subtitle: 'Rate us on Play Store',
+                              trailing: const Icon(
+                                Icons.chevron_right,
+                                color: AppColors.textTertiary,
+                              ),
+                              onTap: _rateApp,
+                            )
+                            .animate()
+                            .fadeIn(delay: 550.ms, duration: 300.ms)
+                            .slideX(begin: 0.05, end: 0),
+
+                        const SizedBox(height: 12),
+
+                        _SettingsTile(
+                              icon: Icons.mail_outline_rounded,
+                              iconColor: AppColors.secondaryPurple,
+                              title: 'Send Feedback',
+                              subtitle: 'Report bugs or suggest features',
+                              trailing: const Icon(
+                                Icons.chevron_right,
+                                color: AppColors.textTertiary,
+                              ),
+                              onTap: _sendFeedback,
+                            )
+                            .animate()
+                            .fadeIn(delay: 600.ms, duration: 300.ms)
                             .slideX(begin: 0.05, end: 0),
 
                         const SizedBox(height: 40),
@@ -335,6 +376,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _rateApp() async {
+    final Uri url = Uri.parse(
+      'https://play.google.com/store/apps/details?id=com.app.video_converter_pro',
+    );
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Could not open store link')),
+        );
+      }
+    }
+  }
+
+  Future<void> _sendFeedback() async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'nexusplayengine@protonmail.com',
+      query: 'subject=Video Converter Pro Feedback',
+    );
+    if (!await launchUrl(emailLaunchUri)) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Could not open email app')),
+        );
+      }
+    }
   }
 }
 

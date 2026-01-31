@@ -1,7 +1,7 @@
 name: video_converter_pro
 description: "Premium Video Converter Pro - Convert videos with style"
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ^3.10.0
@@ -38,6 +38,7 @@ dependencies:
   # Haptic Feedback
   vibration: ^2.0.1
   device_info_plus: ^11.5.0
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4
